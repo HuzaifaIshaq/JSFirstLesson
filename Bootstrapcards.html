@@ -16,10 +16,11 @@
         <div id="chargingCard" class="card" style="width: 18rem;">
           <img id="chargingimage" src="braincharge.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 id="chargingcardtitle" class="card-title">Charge your Brain With Button</h5>
-            <p id="chargingpara" class="card-text">Please Click the button below to start charging your brain with us. Click at your own
+            <h5 id="chargingcardtitle" style="visibility: visible;" class="card-title">Charge your Brain With Button</h5>
+            <p id="chargingpara" class="card-text">Please Click the button below to start charging your brain with us.
+              Click at your own
               risk.</p>
-            <a id="chargingButton" onclick="chargingstart()" href="#" class="btn btn-primary">Start Charging</a>
+            <a id="chargingButton" onclick="toggleScreen()" href="#" class="btn btn-primary">Start Charging</a>
           </div>
         </div>
       </div>
@@ -29,6 +30,8 @@
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"></script>
     <script>
+      let charging = false;
+
       function chargingstart() {
         let cardparagraph = "Apke Brain Ki Charging Shuru Ho Gayi Hai Please wait karyn or is doraan kuch bhi Harkat na karyn...";
         document.getElementById("chargingcardtitle").innerHTML = "Charging Started";
@@ -37,9 +40,24 @@
         document.getElementById("chargingButton").innerHTML = "Stop Charging";
         document.getElementById("chargingpara").innerHTML = cardparagraph;
         document.getElementById('chargingButton').style.backgroundColor = "red";
-
+        charging = true;
 
       }
+      function stopcharging() {
+        document.getElementById("chargingcardtitle").style.display = "None";
+        document.getElementById("chargingpara").style.display = "None";
+        document.getElementById('chargingimage').src = "braincharge.jpeg";
+        document.getElementById("chargingButton").innerHTML = "Charging Completed 😁 ";
+      }
+      function toggleScreen() {
+        if (!charging) {
+          chargingstart();
+        } else {
+          stopcharging();
+        }
+      }
+
+
     </script>
 </body>
 
